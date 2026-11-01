@@ -1,46 +1,26 @@
-# Astro Starter Kit: Basics
+# Sahil Sood — Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+The personal portfolio of **Sahil Sood**, a Senior Android Engineer and Mobile
+Team Lead who builds scalable, secure, and user-centric mobile apps.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Explore
 
-## 🚀 Project Structure
+- **Website:** https://sahilsood.com/
+- **New experience:** https://sahilsood.com/new/
+- **Résumé:** https://sahilsood.com/SahilSoodResume.pdf
 
-Inside of your Astro project, you'll see the following folders and files:
+## About
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+This site brings together my experience as a mobile engineer — the teams and
+products I've worked on, the projects I've shipped, and the skills I bring — in
+a dark, Sith-inspired interface.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Connect
 
-## 🧞 Commands
+- [LinkedIn](https://www.linkedin.com/in/sahilsood28/)
+- [GitHub](https://github.com/sahilsood/)
+- [X](https://x.com/sahil_sood28)
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+© 2026 Sahil Sood. All rights reserved.
