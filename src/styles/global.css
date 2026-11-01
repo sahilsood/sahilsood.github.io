@@ -786,7 +786,10 @@ body.has-custom-cursor * {
   z-index: 4;
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 0.5rem 2.6rem 2.6rem 0.5rem;
+  /* Mirrored vs. the right chassis: the pair of 180deg rotations (fold + the
+     back face's own rotateY) flips left/right, so the large radius must sit on
+     the outer edge and the hinge edge stays nearly square. */
+  border-radius: 2.6rem 0.5rem 0.5rem 2.6rem;
   background:
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 3px),
     linear-gradient(135deg, #4b5058 0%, #33373e 38%, #565b63 52%, #2a2e34 66%, #44484f 100%);
