@@ -1,0 +1,61 @@
+.column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+
+.btn.active {
+  background-color: #8490ff;
+  color: white;
+}
+
+.btn {
+color: #494949 !important;
+text-transform: uppercase;
+text-decoration: none;
+background: #ffffff;
+padding: 20px;
+border: 4px solid #494949 !important;
+display: inline-block;
+transition: all 0.4s ease 0s;
+}
+
+.btn:hover {
+color: #ffffff !important;
+background: #8490ff;
+border-color: #494949 !important;
+transition: all 0.4s ease 0s;
+}
+
+.DivToScroll{   
+
+    border-radius: 4px 0 4px 0;
+    color: #3B3C3E;
+    border: 1px solid #DDDDDD;
+
+    left: -1px;
+    padding: 10px 7px 5px;
+        height:1000px;
+    overflow:scroll;
+    overflow-x:hidden;
+}

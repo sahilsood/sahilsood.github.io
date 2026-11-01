@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{site.title}</title>
+		<meta name="description" content={site.description} />
+		<meta name="theme-color" content={site.themeColor} />
+	</head>
+	<body class="antialiased">
+		<div class="saber-top" aria-hidden="true"></div>
+		<slot />
+		<div class="cursor-glow" aria-hidden="true"></div>
+		<div class="cursor-box" aria-hidden="true"></div>
+		<script is:inline>
+			const glow = document.querySelector(".cursor-glow");
+			const box = document.querySelector(".cursor-box");
+			const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+			const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			if (glow && box && finePointer && !reduceMotion) {
+				document.body.classList.add("has-custom-cursor");
+				const root = document.documentElement;
+				let x = window.innerWidth / 2;
+				let y = window.innerHeight / 3;
+				let frame = 0;
+
+				const render = () => {
+					root.style.setProperty("--pointer-x", x + "px");
+					root.style.setProperty("--pointer-y", y + "px");
+					frame = 0;
+				};
+
+				window.addEventListener(
+					"pointermove",
+					(event) => {
+						if (event.pointerType && event.pointerType !== "mouse") return;
+						x = event.clientX;
+						y = event.clientY;
+						glow.classList.add("is-active");
+						box.classList.add("is-active");
+						if (!frame) frame = window.requestAnimationFrame(render);
+					},
+					{ passive: true },
+				);
+
+				document.addEventListener("mouseleave", () => {
+					glow.classList.remove("is-active");
+					box.classList.remove("is-active");
+				});
+
+				const interactive = "a, button, [role='button'], input, textarea, select, summary";
+				document.addEventListener("pointerover", (event) => {
+					if (event.target.closest && event.target.closest(interactive)) {
+						box.classList.add("is-hover");
+					}
+				});
+				document.addEventListener("pointerout", (event) => {
+					if (event.target.closest && event.target.closest(interactive)) {
+						box.classList.remove("is-hover");
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

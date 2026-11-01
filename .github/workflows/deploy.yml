@@ -1,0 +1,60 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro site (published under /new/)
+        run: npm run build
+        env:
+          SITE_BASE: /new/
+
+      - name: Assemble site (legacy at root, Astro under /new/)
+        run: |
+          set -e
+          mkdir -p publication
+          # Legacy static site served from the root
+          cp -R index.html privacy-policy.html SahilSoodResume.pdf CNAME css js img fonts publication/
+          # New Astro build served from /new/
+          mkdir -p publication/new
+          cp -R dist/. publication/new/
+          # Prevent Jekyll processing of the artifact
+          touch publication/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: publication
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
